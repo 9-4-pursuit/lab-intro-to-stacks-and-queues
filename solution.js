@@ -75,10 +75,16 @@ class Stack {
 
   // SORT
   sort() {
-    if ('quick' < 'brown')  {
-      console.log(true);
-    } else {
-      console.log(false);
+    let sorted = new Stack();
+    while (!this.isEmpty()) {
+      let temp = this.pop();
+      while (!sorted.isEmpty() && sorted.peek().data > temp.data) {
+        this.push(sorted.pop().data);
+      }
+      sorted.push(temp.data);
+    }
+    while (!sorted.isEmpty()) {
+      this.push(sorted.pop().data);
     }
   }
 
