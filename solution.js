@@ -9,9 +9,21 @@ class Node {
 }
 
 class Stack {
-    constructor() {
-        
+    constructor(top = null) {
+        this.top = top
     }
+
+    push(data) {
+        const newItem = new Node(data); 
+        newItem.next = this.top; 
+        this.top = newItem; 
+    }
+
+
+
+    
+
+
 }
 
 class Queue {
