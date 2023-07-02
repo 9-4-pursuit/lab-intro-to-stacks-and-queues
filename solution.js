@@ -97,6 +97,10 @@ class Queue {
         this.max = null;
     }
 
+    count(){
+        return this.size;
+    }
+
     dequeue() {
         if(this.first === null){
             throw new Error("The queue is empty");
