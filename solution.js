@@ -143,7 +143,7 @@ class Queue {
     }
     this.size--;
 
-    if (removedNode.data === this.maxNode.data) {
+    if (removedNode === this.maxNode) {
       this.updateMaxNode();
     }
 
@@ -181,7 +181,7 @@ class Queue {
     if (this.isEmpty()) {
       throw new Error("The queue is empty");
     }
-    return this.last.data;
+    return this.last;
   }
 
   isEmpty() {
@@ -192,7 +192,7 @@ class Queue {
     if (this.isEmpty()) {
       throw new Error("The queue is empty");
     }
-    return this.first.data;
+    return this.first;
   }
 
   updateMaxNode() {
