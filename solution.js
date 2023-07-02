@@ -56,7 +56,12 @@ class Stack {
         return minValue;
     }
 
-
+    peek() {
+        if (this.top === null){
+            throw new Error("The Stack is Empty");
+        }
+        return this.top;
+    }
 }
 
 class Queue {
