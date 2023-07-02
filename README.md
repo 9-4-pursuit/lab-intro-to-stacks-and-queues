@@ -51,6 +51,7 @@ You will
 
 - Create a stack with properties
   - top
+
 - Stack methods
 
   - `push`
@@ -68,7 +69,7 @@ You will
   - `size`
   - `max` value
 
-- Stack methods
+- Queue methods
 
   - `count`
   - `dequeue`
