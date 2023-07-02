@@ -97,6 +97,19 @@ class Queue {
         this.max = null;
     }
 
+    dequeue() {
+        if(this.first === null){
+            throw new Error("The queue is empty");
+        }
+        const item = this.first;
+        if (this.first === this.last){
+            this.last = null;
+        } 
+        this.first = this.first.next;
+        this.size--;
+        return item.data;
+    }
+
     enqueue(data) {
         let newItem = new Node(data);
 
