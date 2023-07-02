@@ -128,15 +128,21 @@ class Queue {
   }
 
   getLast() {
-
+    if (this.last === null){
+      throw new Error("The queue is empty");
+    }
+    return this.last;
   }
 
   isEmpty() {
-
+    return this.first === null;
   }
 
   peek() {
-
+    if (this.last === null){
+      throw new Error("The queue is empty");
+    }
+    return this.first;
   }
 
 }
