@@ -102,6 +102,20 @@ class Queue {
     this.size = 0;
     this.max = 0;
   };
+
+  enqueue(data) {
+    let newItem = new Node(data);
+    if(!this.first) {
+      this.first = newItem;
+      this.last = newItem
+    } else {
+      this.last.next = newItem;
+      this.last = newItem
+    };
+    return this.size++
+  };
+
+
 };
 
 
