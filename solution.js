@@ -127,6 +127,18 @@ class Queue {
         this.size++;
     }
 
+    findMax(){
+        let currentNode = this.first;
+        this.max = currentNode.data;
+        while (currentNode != null){
+            if (this.max < currentNode.data){
+                this.max = currentNode.data;
+            }
+            currentNode = currentNode.next;
+        }
+        return this.max;
+    }
+
 }
 
 
