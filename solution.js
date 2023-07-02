@@ -91,8 +91,25 @@ class Stack {
 
 class Queue {
     constructor() {
-        
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+        this.max = null;
     }
+
+    enqueue(data) {
+        let newItem = new Node(data);
+
+        if (!this.first) {
+            this.first = newItem;
+            this.last = newItem;
+        } else {
+            this.last.next = newItem;
+            this.last = newItem;
+        }
+        this.size++;
+    }
+
 }
 
 
