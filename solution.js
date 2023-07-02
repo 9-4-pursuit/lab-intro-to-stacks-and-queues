@@ -13,12 +13,14 @@ class Stack {
     this.top = top;
   };
 
+  // PUSH
   push(data) {
     const newItem = new Node(data);
     newItem.next = this.top;
     this.top = newItem;
   };
 
+  // POP
   pop() {
     if (this.top === null) {
       throw new Error("The stack doesn't exist")
@@ -29,6 +31,7 @@ class Stack {
     };
   };
 
+  // SIZE
   size() {
     let count = 0;
     let currentItem = this.top;
@@ -42,8 +45,19 @@ class Stack {
     return count;
   };
 
+  // IS EMPTY
   isEmpty() {
     return this.top === null;
+  };
+
+  // PEEK
+  peek() {
+    return this.top;
+  }
+
+  // FIND MIN
+  findMin() {
+
   }
 
 };
