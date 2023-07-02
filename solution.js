@@ -60,7 +60,7 @@ class Stack {
     let current = this.top
     let minNode = current
     while (current) {
-      if(minNode.data < current.data){
+      if(minNode.data > current.data){
         minNode = current
       }
       current = current.next
