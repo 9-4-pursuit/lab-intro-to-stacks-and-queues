@@ -90,7 +90,16 @@ class Queue {
   }
 
   dequeue() {
-  
+    if (!this.first) {
+      throw new Error('The queue is empty');
+    }
+    const removedItem = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return removedItem.data;
   }
 
   enqueue(data) {
