@@ -133,7 +133,7 @@ class Queue {
     let count = 0;
     let currentItem = this.first;
 
-    while(currentItem) {
+    while (currentItem) {
       count++;
       currentItem = currentItem.next;
     };
@@ -154,10 +154,24 @@ class Queue {
   getLast() {
     let currentItem = this.first;
 
-    while(currentItem.next != null){
+    while (currentItem.next != null) {
       currentItem = currentItem.next;
     };
     return currentItem;
+  };
+
+  findMax() {
+    let dataValue = this.first.data;
+
+    while (this.first) {
+      if (dataValue < this.first.data) {
+        dataValue = this.first.data;
+        this.first = this.first.next;
+      } else {
+        this.first = this.first.next;
+      };
+    };
+    return dataValue;
   }
 
 };
