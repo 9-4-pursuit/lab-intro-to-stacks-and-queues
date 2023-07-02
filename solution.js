@@ -149,6 +149,15 @@ class Queue {
       throw new Error('The queue is empty');
     };
     return this.first;
+  };
+
+  getLast() {
+    let currentItem = this.first;
+
+    while(currentItem.next != null){
+      currentItem = currentItem.next;
+    };
+    return currentItem;
   }
 
 };
