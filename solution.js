@@ -64,28 +64,17 @@ class Stack {
     }
 
     sort() {
-        let sortStack = new Stack(new Node(this.pop().data));
-
-        while(!this.isEmpty()){
-            let currentNode = sortStack.top;
-            console.log(currentNode)
-            let value = new Node(this.pop().data);
-
-            while(currentNode !== null){
-                if (value.data < sortStack.top.data){
-                    value.next = currentNode;
-                    sortStack.top = value
-                    currentNode = null;
-                } else if (currentNode.next === null || currentNode.next.data > value.data){
-                    value.next = currentNode.next;
-                    currentNode.next = value
-                    currentNode = null;
-                } else {
-                    currentNode = currentNode.next;
-                }
-            }
+        let sorted = new Stack();
+        while (!this.isEmpty()) {
+          let temp = this.pop();  
+          while (!sorted.isEmpty() && sorted.peek().data > temp.data) {
+            this.push(sorted.pop().data);
+          }
+          sorted.push(temp.data);
         }
-        this.top = sortStack.top;
+        while (!sorted.isEmpty()) {
+          this.push(sorted.pop().data);
+        }
     }
 }
 
@@ -140,6 +129,9 @@ class Queue {
     }
 
     getLast(){
+        if (this.last === null){
+            throw new Error("The queue is empty");
+        }
         return this.last;
     }
 
@@ -148,7 +140,7 @@ class Queue {
     }
 
     peek() {
-        if (this.first == null) {
+        if (this.first === null) {
           throw new Error("The queue is empty");
         }
         return this.first;
