@@ -32,11 +32,6 @@ const { inspect } = require("util");
       return count;
     }
     
-    
-
-
-
-
     pop() {
       if (this.top === null) {
         throw new Error("The Stack is Empty");
@@ -49,6 +44,77 @@ const { inspect } = require("util");
       return item;
     }
     
+    isEmpty() {
+      // O(1)
+      return this.top === null;
+    }
+
+
+    findMin() {
+      // Check if the stack is empty
+      if (this.top === null) {
+        throw new Error("The Stack is Empty");
+      }
+    
+      let current = this.top; // Start with the top node
+      let minValue = current.data; // Assume the data of the top node is the minimum value
+    
+      while (current !== null) {
+        // Compare the data value of the current node with the current minimum value
+        if (current.data < minValue) {
+          minValue = current.data; // Update the minimum value if a smaller value is found
+        }
+        current = current.next; // Move to the next node
+      }
+    
+      return minValue; // Return the minimum value found in the stack
+    }
+    
+
+    peek() {
+      if (this.top === null) {
+        throw new Error("The Stack is Empty");
+      }
+      return this.top;
+    }
+
+    sort() {
+      // Check if the stack is empty or has only one element (already sorted)
+      if (this.top === null || this.top.next === null) {
+        return;
+      }
+    
+      let stackSize = this.size(); // Get the size of the stack
+    
+      for (let i = 0; i < stackSize - 1; i++) {
+        let current = this.top; // Start with the top node
+        let nextNode = current.next; // Get the next node
+    
+        for (let j = 0; j < stackSize - i - 1; j++) {
+          // Compare the data values of the current node and the next node
+          if (current.data > nextNode.data) {
+            // Swap the data values if they are not in ascending order
+            let temp = current.data;
+            current.data = nextNode.data;
+            nextNode.data = temp;
+          }
+    
+          current = nextNode; // Move to the next node
+          nextNode = nextNode.next; // Move to the next next node
+        }
+      }
+    }
+    
+    
+    
+    
+    
+    
+
+
+
+
+
 
   }
 
