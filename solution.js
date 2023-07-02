@@ -105,7 +105,7 @@ class Queue {
 
   enqueue(data) {
     let newItem = new Node(data);
-    if(!this.first) {
+    if (!this.first) {
       this.first = newItem;
       this.last = newItem
     } else {
@@ -115,6 +115,30 @@ class Queue {
     return this.size++
   };
 
+  dequeue() {
+    if (this.first === null) {
+      throw new Error('The queue is empty');
+    };
+    const item = this.first;
+
+    if (this.first === this.last) {
+      this.last = null;
+    };
+    this.first = this.first.next;
+    this.size--;
+    return item.data;
+  };
+
+  count() {
+    let count = 0;
+    let currentItem = this.first;
+
+    while(currentItem) {
+      count++;
+      currentItem = currentItem.next;
+    };
+    return count;
+  };
 
 };
 
