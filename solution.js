@@ -11,7 +11,8 @@ class Node {
 class Stack {
   constructor(top = null) {
     this.top = top;
-    this.minNode = null; // variable to track the minimum value
+    this.minNode = null;
+    this.maxNode = null; // variable to track the minimum value
   }
 
   push(data) {
@@ -22,6 +23,11 @@ class Stack {
     // Update the minimum value if necessary
     if (this.minNode === null || data < this.minNode) {
       this.minNode = data;
+    }
+
+    // Update the max value if necessary
+    if (this.maxNode === null || data > this.maxNode) {
+      this.maxNode = data;
     }
   }
 
@@ -71,6 +77,12 @@ class Stack {
       throw new Error("The Stack is Empty");
     }
     return this.minNode;
+  }
+  findMax() {
+    if (this.maxNode === null) {
+      throw new Error("The Stack is Empty");
+    }
+    return this.maxNode;
   }
 
   sort() {
