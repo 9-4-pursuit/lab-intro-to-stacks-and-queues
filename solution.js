@@ -19,8 +19,33 @@ class Stack {
     this.top = newItem;
   };
 
-  
-  
+  pop() {
+    if (this.top === null) {
+      throw new Error("The stack doesn't exist")
+    } else {
+      let item = this.top;
+      this.top = this.top.next;
+      return item;
+    };
+  };
+
+  size() {
+    let count = 0;
+    let currentItem = this.top;
+
+    // console.log(this)
+    while (currentItem) {
+      count++;
+      currentItem = currentItem.next;
+      // console.log(count)
+    };
+    return count;
+  };
+
+  isEmpty() {
+    return this.top === null;
+  }
+
 };
 
 
