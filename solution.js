@@ -21,8 +21,8 @@ push(data) {
 }
 
 size() {
-  const count = 0;
-  const node = this.top;
+  let count = 0;
+  let node = this.top;
 
     while(node) {
     node = node.next;
@@ -32,10 +32,10 @@ size() {
 }
 
 pop() {
-  const popp = this.top;
+  let popp = this.top;
 
   this.top = popp.next;
-  return this.popp;
+  return popp;
 }
 
 isEmpty() {
@@ -48,16 +48,16 @@ peek() {
 }
 
 findMin() {
-  const minimum = this.top.data;
+  let min = this.top.data;
+  let node = this.top;
 
-  const node = this.top;
     while(node) {
-    if(node.data < minimum) {
-       minimum = node.data 
+    if(node.data < min) {
+       min = node.data;
     }
     node = node.next;
   }
-    return minimum;
+    return min;
 }
 
 Arr() {
@@ -84,30 +84,43 @@ sort() {
   const stackArr = this.Arr();
 
   stackArr.sort((a, b) => a > b ? -1 : a < b ? 1 : 0);
-  console.log(stackArr);
 
+  console.log(stackArr);
   this.clear();
   this.arrToStack(stackArr);
-}
-
-// sort() {
-//   const stackArr = this.Arr();
-
-//   stackArr.sort((a, b) => {
-//     if(a > b) {
-//       return -1;
-//     } else if (a < b){
-//       return 1;
-//     } else {
-//       return 0;
-//     }
-//   });
-//   console.log(stackArr)
-//   this.clear();
-//   this.arrToStack(stackArr);
-//   };
-
+  }
 };
+
+
+
+class Queue {
+  constructor(value) {
+    this.first = null
+    this.last = null
+    this.size = 0
+    this.max = value;
+  }
+
+  count() {
+    return this.size;
+  }
+
+  enqueue(data) {
+    const newNode = new Node(data);
+
+    if(this.isEmpty()) {
+      this.first = newNode
+    } else {
+      this.last.next = newNode
+    }  
+    
+    this.last = newNode;
+    this.size++;
+  }
+
+
+
+}
 
 
 
