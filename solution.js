@@ -29,6 +29,17 @@ class Stack {
         return size;
     }
 
+    pop() {
+        if (this.top === null){
+            throw new Error("The Stack is Empty");
+        }
+
+        let item = this.top; 
+        let newItem = item.next; 
+        this.top = newItem; 
+        return item;
+    }
+
     
 
 
