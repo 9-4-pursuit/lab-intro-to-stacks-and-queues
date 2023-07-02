@@ -57,8 +57,32 @@ class Stack {
 
   // FIND MIN
   findMin() {
+    // let currentItem = this.top
+    let dataValue = this.top.data;
 
+    while (this.top) {
+      // console.log(this.top, dataValue)
+      if (dataValue > this.top.data) {
+
+        dataValue = this.top.data
+        this.top = this.top.next;
+      } else {
+        this.top = this.top.next;
+      };
+    };
+    return dataValue;
+  };
+
+  // SORT
+  sort() {
+    if ('quick' < 'brown')  {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
   }
+
+
 
 };
 
