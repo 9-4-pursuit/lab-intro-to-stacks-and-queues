@@ -11,7 +11,7 @@ class Node {
 class Stack {
   constructor(top = null) {
     this.top = top;
-    this.minValue = null; // variable to track the minimum value
+    this.minNode = null; // variable to track the minimum value
   }
 
   push(data) {
@@ -20,8 +20,8 @@ class Stack {
     this.top = newItem; // the top is now the new item
 
     // Update the minimum value if necessary
-    if (this.minValue === null || data < this.minValue) {
-      this.minValue = data;
+    if (this.minNode === null || data < this.minNode) {
+      this.minNode = data;
     }
   }
 
@@ -67,10 +67,10 @@ class Stack {
   // }
 
   findMin() {
-    if (this.minValue === null) {
+    if (this.minNode === null) {
       throw new Error("The Stack is Empty");
     }
-    return this.minValue;
+    return this.minNode;
   }
 
   sort() {
