@@ -139,6 +139,10 @@ class Queue {
         return this.max;
     }
 
+    getLast(){
+        return this.last;
+    }
+
 }
 
 
