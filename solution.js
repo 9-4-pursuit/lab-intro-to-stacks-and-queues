@@ -140,6 +140,10 @@ class Queue {
     return count;
   };
 
+  isEmpty() {
+    return this.first === null;
+  };
+
 };
 
 
