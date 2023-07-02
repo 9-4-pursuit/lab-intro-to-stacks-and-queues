@@ -19,7 +19,15 @@ class Stack {
         this.top = newItem; 
     }
 
-
+    size() {
+        let size = 0;
+        let currentNode = this.top;
+        while (currentNode !== null){
+            size++;
+            currentNode = currentNode.next;
+        }
+        return size;
+    }
 
     
 
