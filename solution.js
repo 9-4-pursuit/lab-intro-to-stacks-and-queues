@@ -62,6 +62,31 @@ class Stack {
         }
         return this.top;
     }
+
+    sort() {
+        let sortStack = new Stack(new Node(this.pop().data));
+
+        while(!this.isEmpty()){
+            let currentNode = sortStack.top;
+            console.log(currentNode)
+            let value = new Node(this.pop().data);
+
+            while(currentNode !== null){
+                if (value.data < sortStack.top.data){
+                    value.next = currentNode;
+                    sortStack.top = value
+                    currentNode = null;
+                } else if (currentNode.next === null || currentNode.next.data > value.data){
+                    value.next = currentNode.next;
+                    currentNode.next = value
+                    currentNode = null;
+                } else {
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+        this.top = sortStack.top;
+    }
 }
 
 class Queue {
@@ -69,6 +94,12 @@ class Queue {
         
     }
 }
+
+
+
+
+
+
 
 module.exports = {
   Node,
