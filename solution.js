@@ -84,11 +84,11 @@ const { inspect } = require("util");
         return;
       }
     
-      let stackSize = this.size(); // Get the size of the stack
+      let stackSize = this.size(); // Get the size of the stack by calling size()
     
-      for (let i = 0; i < stackSize - 1; i++) {
+      for (let i = 0; i < stackSize; i++) {
         let current = this.top; // Start with the top node
-        let nextNode = current.next; // Get the next node
+        let nextNode = current.next; // Get the next node 
     
         for (let j = 0; j < stackSize - i - 1; j++) {
           // Compare the data values of the current node and the next node
@@ -105,18 +105,7 @@ const { inspect } = require("util");
       }
     }
     
-    
-    
-    
-    
-    
-
-
-
-
-
-
-  }
+  }  // end of class Stack
 
 
 
@@ -126,10 +115,84 @@ const { inspect } = require("util");
       this.last = null;
       this.size = 0;
     }
+
+    enqueue(data) {
+      let newItem = new Node(data);
+  
+      if (!this.first) {
+        this.first = newItem;
+        this.last = newItem;
+      } else {
+        this.last.next = newItem;
+        this.last = newItem;
+      }
+      return ++this.size;
+    }
+
+    dequeue() {
+      if (this.first === null) {
+        throw new Error("The queue is empty");
+      }
+      const item = this.first;
+      if (this.first === this.last) {
+        this.last = null;
+      }
+      this.first = this.first.next;
+      this.size--;
+      return item.data;
+    }
+
+    count() {
+      return this.size;
+    }
+
+    isEmpty() {
+      return this.first === null;
+    }
+
+    peek() {
+      if (this.first == null) {
+        throw new Error("The queue is empty");
+      }
+      return this.first;
+    }
+
+    getLast() {
+      if (this.last === null) {
+        throw new Error("The Queue is Empty");
+      }
+  
+      return this.last;
+    }
+
+    findMax() {
+      if (this.first === null) {
+        throw new Error("The Queue is Empty");
+      }
+  
+      let current = this.first;
+      let maxValue = current.data;
+  
+      while (current !== null) {
+        if (current.data > maxValue) {
+          maxValue = current.data;
+        }
+        current = current.next;
+      }
+  
+      return maxValue;
+    }
+  
+  
+
+
+
+
   }
 
 
   module.exports = {
     Node,
-    Stack
+    Stack,
+    Queue,
   };
