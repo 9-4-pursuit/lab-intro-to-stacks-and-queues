@@ -35,7 +35,6 @@ describe("Stack", () => {
   });
   test("Check if stack is empty", () => {
     let testStack = new Stack();
-
     expect(testStack.isEmpty()).toEqual(true);
     expect(wordStack.isEmpty()).toEqual(false);
   });
