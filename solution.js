@@ -93,6 +93,7 @@ sort() {
 
 
 
+// CREATE A QUEUE WITH PORPERTIES
 class Queue {
   constructor(value) {
     this.first = null
@@ -108,22 +109,48 @@ class Queue {
   enqueue(data) {
     const newNode = new Node(data);
 
-    if(this.isEmpty()) {
+    if(!this.first) {
       this.first = newNode
     } else {
       this.last.next = newNode
     }  
-    
     this.last = newNode;
     this.size++;
   }
 
+  dequeue() {
+    let New = this.first 
+    this.first = this.first.next;
+    this.size--;
+    return New.data;
+  }
 
+  findMax() {
+    let max = this.first.data;
+    let node = this.first.next;
+  
+      while(node) {
+      if(node.data > max) {
+         max = node.data;
+      }
+      node = node.next;
+    }
+      return max;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  peek() {
+    return this.first;
+  }
+
+  getLast() {
+      return this.last;
+  };
 
 }
-
-
-
 
 
 module.exports = {
