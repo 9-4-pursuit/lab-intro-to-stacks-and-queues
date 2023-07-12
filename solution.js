@@ -100,10 +100,81 @@ const stack = new Stack
 const stackSize = stack.size()
 
 
-class Queue{
+
+//Queue
+// class Node{
+//   constructor(data){
+//     this.data = data;
+//     this.next = null;
+//   }
+// }
+
+class Queue {
 constructor(first = null){
+this.first = null
+this.last = null
+this.size = 0
+}
+
+enqueue(data){
+  let newItem = new Node(data)
+  if (!this.first){
+    this.first = newItem
+    this.last = newItem
+    this.size++
+  } else {
+    this.last.next = newItem
+    this.last = newItem
+    this.size++
+  }
+
 
 }
+
+dequeue(){
+
+  const returnVal = this.first.data
+  this.first = this.first.next
+  this.size--
+
+return returnVal
+
+}
+
+peek(){
+return this.first
+}
+
+isEmpty(){
+return this.first === null
+}
+
+count(){
+  return this.size
+}
+
+getLast(){
+  return this.last
+}
+
+findMax(){
+  let currentNode = this.first
+  let maxVal = currentNode
+  while(currentNode){
+    //comparing current value to max value and setting the maxvalue
+    if(currentNode.data > maxVal.data){
+      maxVal = currentNode 
+    }
+    //on to the nexrt node
+    currentNode = currentNode.next
+  }
+  //returning the value (.data) of param maxVal
+  return maxVal.data
+}
+
+//  1 2 4
+
+
 }
 
 
