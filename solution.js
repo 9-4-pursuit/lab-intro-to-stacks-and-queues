@@ -64,29 +64,40 @@ class Stack {
     return this.top;
   }
 
-  delete (value) {
-    if (!this.top) {
-      return "No stack found; cannot delete any value."
-    } else {
-      let currentNode = this.top;
-      if (currentNode.data === value) {
-        this.top = this.top.next;
-      } else {
-        let previousNode = null;
-        while (currentNode) {
-          if (currentNode.data === value) {
-            previousNode.next = currentNode.next;
-            break;
-            // break to prevent multiple deletions and to prevent
-            // clashing with post-if statement.
-          }
-          previousNode = currentNode;
-          currentNode = currentNode.next;
-        }
-        return "Value not found in stack";
-      }
+  sort () {
+    const holdingArray = [];
+    while (this.top) {
+      holdingArray.push(this.pop().data)
+    }
+    holdingArray.sort().reverse();
+    for (let i = 0; i < holdingArray.length; i++) {
+      this.push(holdingArray[i])
     }
   }
+
+  // delete (value) {
+  //   if (!this.top) {
+  //     return "No stack found; cannot delete any value."
+  //   } else {
+  //     let currentNode = this.top;
+  //     if (currentNode.data === value) {
+  //       this.top = this.top.next;
+  //     } else {
+  //       let previousNode = null;
+  //       while (currentNode) {
+  //         if (currentNode.data === value) {
+  //           previousNode.next = currentNode.next;
+  //           break;
+  //           // break to prevent multiple deletions and to prevent
+  //           // clashing with post-if statement.
+  //         }
+  //         previousNode = currentNode;
+  //         currentNode = currentNode.next;
+  //       }
+  //       return "Value not found in stack";
+  //     }
+  //   }
+  // }
 /*
 Traditional recursion returns a value.  When using ".this" references, though,
 .this modified directly (well, via delete() and sort())
@@ -94,14 +105,14 @@ Tail end recursion not used, so will probably crash for out of memory if
 large stack used.  
 */
 
-  sort(toSortStack = this.top, localMinimum = this.findMin()) {
-    if (toSortStack === null) {
-      return;
-    }
-    this.delete(localMinimum);
-    this.sort();
-    this.push(localMinimum);
-  }
+  // sort(toSortStack = this.top, localMinimum = this.findMin()) {
+  //   if (toSortStack === null) {
+  //     return;
+  //   }
+  //   this.delete(localMinimum);
+  //   this.sort();
+  //   this.push(localMinimum);
+  // }
   // sort
 }
 
