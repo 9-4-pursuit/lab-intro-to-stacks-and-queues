@@ -64,6 +64,9 @@ class Stack {
     return this.top;
   }
 
+  /*
+  Implemented this sort after lost a point on original (see RECURSION below)
+  
   sort () {
     const holdingArray = [];
     while (this.top) {
@@ -74,47 +77,80 @@ class Stack {
       this.push(holdingArray[i])
     }
   }
+  */
 
-  // delete (value) {
-  //   if (!this.top) {
-  //     return "No stack found; cannot delete any value."
-  //   } else {
-  //     let currentNode = this.top;
-  //     if (currentNode.data === value) {
-  //       this.top = this.top.next;
-  //     } else {
-  //       let previousNode = null;
-  //       while (currentNode) {
-  //         if (currentNode.data === value) {
-  //           previousNode.next = currentNode.next;
-  //           break;
-  //           // break to prevent multiple deletions and to prevent
-  //           // clashing with post-if statement.
-  //         }
-  //         previousNode = currentNode;
-  //         currentNode = currentNode.next;
-  //       }
-  //       return "Value not found in stack";
-  //     }
-  //   }
-  // }
+  /*
+  2-Stack Sort
+
+  Instructor wanted to see an implementation of sort using one additional stack
+  and only push and pop.  Boop.
+  */
+
+  sort() {
+    const tempStack = new Stack();
+    while (!this.isEmpty()) {
+      const tempNode = this.pop();
+      if (!tempStack.isEmpty() && tempNode.data > tempStack.peek().data) {
+        this.push(tempStack.pop().data);
+      }
+      tempStack.push(tempNode.data);
+    }
+    this.top = tempStack.top;
+  }
+
 /*
+RECURSION:
+
 Traditional recursion returns a value.  When using ".this" references, though,
 .this modified directly (well, via delete() and sort())
 Tail end recursion not used, so will probably crash for out of memory if
-large stack used.  
-*/
+large stack used.
+2023 Jul 12 - Project was graded, and got point taken off for doing "bonus".  >.>
+Or more correctly, got point taken off for "Max call stack exceeded" or such.
+Though the code did pass the original test data (and would not have exeeded call stack)
+(as I expect .sort() was invoked in the test code, I knew the recursion implementation
+had issues.)
 
-  // sort(toSortStack = this.top, localMinimum = this.findMin()) {
-  //   if (toSortStack === null) {
-  //     return;
-  //   }
-  //   this.delete(localMinimum);
-  //   this.sort();
-  //   this.push(localMinimum);
-  // }
+Maybe I'll figure out tail end recursion on this, probably should look at it.
+No joy on asking about implementation though.  Business as usual, more or less.
+
+  delete (value) {
+    if (!this.top) {
+      return "No stack found; cannot delete any value."
+    } else {
+      let currentNode = this.top;
+      if (currentNode.data === value) {
+        this.top = this.top.next;
+      } else {
+        let previousNode = null;
+        while (currentNode) {
+          if (currentNode.data === value) {
+            previousNode.next = currentNode.next;
+            break;
+            // break to prevent multiple deletions and to prevent
+            // clashing with post-if statement.
+          }
+          previousNode = currentNode;
+          currentNode = currentNode.next;
+        }
+        return "Value not found in stack";
+      }
+    }
+  }
+
+
+  sort(toSortStack = this.top, localMinimum = this.findMin()) {
+    if (toSortStack === null) {
+      return;
+    }
+    this.delete(localMinimum);
+    this.sort();
+    this.push(localMinimum);
+  }
   // sort
+  */
 }
+// Stack
 
 class Queue {
   constructor () {
