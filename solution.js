@@ -61,6 +61,14 @@ class Stack {
     }
     return minValue;
   }
+  sort() {
+    let minVal = this.findMin();
+    this.push(minVal);
+    let current = this.top;
+    while (current < this.peek()) {
+      current = current.next;
+    }
+  }
 }
 class Queue {
   constructor() {
