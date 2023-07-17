@@ -95,6 +95,9 @@ class Queue {
   count() {
     return this.size;
   }
+  isEmpty() {
+    return this.count() == 0 ? true : false;
+  }
 }
 module.exports = {
   Node,
