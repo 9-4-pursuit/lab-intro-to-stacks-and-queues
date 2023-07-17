@@ -103,6 +103,18 @@ class Queue {
   getLast() {
     return this.last;
   }
+  findMax() {
+    if (this.count() == 0) throw new Error("Empty Qeueue");
+    let current = this.first;
+    let maxVal = this.first.data;
+    while (current) {
+      if (maxVal < current.data) {
+        maxVal = current.data;
+      }
+      current = current.next;
+    }
+    return maxVal;
+  }
 }
 module.exports = {
   Node,
