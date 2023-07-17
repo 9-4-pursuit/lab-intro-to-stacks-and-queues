@@ -98,6 +98,9 @@ class Queue {
   isEmpty() {
     return this.count() == 0 ? true : false;
   }
+  peek() {
+    return this.first;
+  }
 }
 module.exports = {
   Node,
