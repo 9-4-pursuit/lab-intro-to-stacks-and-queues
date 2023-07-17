@@ -93,7 +93,7 @@ class Queue {
   }
 
   count() {
-    return this.size();
+    return this.size;
   }
 }
 module.exports = {
