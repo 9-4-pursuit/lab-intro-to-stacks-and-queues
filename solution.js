@@ -77,9 +77,8 @@ class Queue {
       this.last = node;
     }
     this.last.next = node;
-    node = this.last;
+    this.last = node;
     this.size++;
-    return this.bottom;
   }
 
   dequeue() {
@@ -100,6 +99,9 @@ class Queue {
   }
   peek() {
     return this.first;
+  }
+  getLast() {
+    return this.last;
   }
 }
 module.exports = {
