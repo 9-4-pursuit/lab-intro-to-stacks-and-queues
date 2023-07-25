@@ -21,23 +21,34 @@ class Stack {
     const newItem = new Node(data);
     newItem.next = this.top;
     this.top = newItem;
-  }//adds data
+  }//adds data, succesfull
 
   peek() {
     if (this.top === null) {
       throw new Error("The Stack is Empty");
     }
     return this.top;
-  }
+  } //sucessful
 
   pop() {
     if (this.top === null) {
       throw new Error("The Stack is Empty");
     }
-    let item = this.top
-    let newItem = item.next
-    this.top = newItem
-    return item
+    let item = this.top;
+    let newItem = item.next;
+    this.top = newItem;
+    return item;
+  }
+
+  size() {
+    let count = 0;
+    let currentNode = this.top;
+    while (currentNode != null) 
+    {
+      count++;
+      currentNode = currentNode.next
+    }
+    return count;
   }
 }
 
@@ -48,7 +59,7 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
-    this.max = 0; 
+    this.max = null; 
   }
 
   enqueue(data) {
@@ -62,7 +73,7 @@ class Queue {
       this.last.next = newItem;
       this.last = newItem;
     }
-    return ++this.size;
+    return this.size++;
   }
 
   dequeue() {
