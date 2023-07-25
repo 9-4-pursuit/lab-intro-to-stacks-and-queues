@@ -63,6 +63,18 @@ class Stack {
     }
     return minimum
   }
+
+  sort() {
+    let currentNode = this.top;
+    let nextNode = currentNode;
+    while (currentNode) {
+      if (nextNode.data > currentNode.data) {
+        nextNode = currentNode;
+      }
+      this.top = nextNode;
+      currentNode = currentNode.next
+    }
+  }
 }
 
 //const stack = new Stack();
