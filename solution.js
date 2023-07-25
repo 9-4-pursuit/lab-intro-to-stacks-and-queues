@@ -50,6 +50,19 @@ class Stack {
     }
     return count;
   }
+
+  findMin() {
+    let currentNode = this.top;
+    let minimum = currentNode.data;
+
+    for (let i = 0; i < currentNode.length; i++) {
+      if (currentNode.data < minimum) {
+        minimum = currentNode.data
+      }
+      currentNode = currentNode.next;
+    }
+    return minimum
+  }
 }
 
 //const stack = new Stack();
