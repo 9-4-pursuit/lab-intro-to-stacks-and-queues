@@ -131,6 +131,10 @@ class Queue {
   isEmpty() {
     return this.first === null;
   }
+
+  getLast() {
+    return this.last;
+  }
 }
 
 
