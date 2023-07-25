@@ -77,8 +77,6 @@ class Stack {
   }
 }
 
-//const stack = new Stack();
-
 class Queue {
   constructor() {
     this.first = null;
@@ -88,7 +86,7 @@ class Queue {
   }
 
   enqueue(data) {
-    let newItem = newNode(data);
+    let newItem = new Node(data);
 
     if (!this.first) {
       this.first = newItem;
@@ -124,6 +122,14 @@ class Queue {
       throw new Error("The queue is empty");
     }
     return this.first
+  }
+
+  count() {
+    return this.size;
+  }
+
+  isEmpty() {
+    return this.first === null;
   }
 }
 
